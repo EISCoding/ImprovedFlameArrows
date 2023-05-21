@@ -1,0 +1,8 @@
+name: ImprovedFlameArrow
+version: 1.2
+main: de.eiscoding.improvedFlameArrow.improvedFlameArrow
+api-version: 1.19
+authors:
+  - EISCoding
+commands:
+  flamearrow:
