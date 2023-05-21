@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.eiscoding</groupId>
-    <artifactId>FireArrow</artifactId>
+    <artifactId>improvedFlameArrow</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>FireArrow</name>
+    <name>ImprovedFlameArrow</name>
 
     <properties>
         <java.version>1.8</java.version>
