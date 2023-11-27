@@ -3,6 +3,7 @@ package de.eiscoding.improvedFlameArrow.events;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockState;
 import org.bukkit.block.data.type.Fire;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Projectile;
@@ -25,13 +26,15 @@ public class ProjectileHitListener implements Listener {
             if (arrow.getFireTicks() > 0) {
                 if (block != null && blockFace != null){
                     if (relativeBlock.getType().isAir()){
-                        relativeBlock.setType(Material.FIRE);
-                        if (event.getHitBlockFace().getOppositeFace() == BlockFace.DOWN) {
-                            return;
+                        BlockState blockState = relativeBlock.getState();
+                        blockState.setType(Material.FIRE);
+                        if (e.getHitBlockFace().getOppositeFace() != BlockFace.DOWN) 
+                        {                                
+                            Fire fire = (Fire) blockState.getBlockData();
+                            fire.setFace(e.getHitBlockFace().getOppositeFace(), true);
+                            blockState.setBlockData(fire);
                         }
-                        Fire fire = (Fire) relativeBlock.getBlockData();
-                        fire.setFace(event.getHitBlockFace().getOppositeFace(), true);
-                        relativeBlock.setBlockData(fire);
+                        blockState.update(true);
                     }
                 }
             }
